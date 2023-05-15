@@ -29,7 +29,7 @@ class APA102:
         """Start automatic updates at desired framerate."""
         ...
 
-    def get(self) -> tuple(int, int, int, int):
+    def get(self) -> tuple[int, int, int, int]:
         """Get a single pixel's RGBW values."""
         ...
 
@@ -59,7 +59,7 @@ class WS2812:
         """Start automatic updates at desired framerate."""
         ...
 
-    def get(self) -> tuple(int, int, int, int):
+    def get(self) -> tuple[int, int, int, int]:
         """Get a single pixel's RGB values."""
         ...
 
