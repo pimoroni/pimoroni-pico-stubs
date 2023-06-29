@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Literal
 
 import machine
+from picographics import PicoGraphics
 
 BUTTON_DOWN = 11
 BUTTON_A = 12
@@ -90,11 +91,8 @@ def sleep_for(minutes: int) -> None:
 pico_rtc_to_pcf = pcf_to_pico_rtc = sleep_for
 
 
-class Badger2040():
+class Badger2040(PicoGraphics):
     def __init__(self):
-        ...
-
-    def __getattr__(self, item):
         ...
 
     def update(self) -> None:
