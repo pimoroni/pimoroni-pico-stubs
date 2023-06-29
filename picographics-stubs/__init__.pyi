@@ -59,7 +59,7 @@ def RGB565_to_RGB(rgb565: int) -> tuple[int, int, int]:
 
 
 class PicoGraphics:
-    def __init__(self, display, rotate: int = -1, bus: object = None, buffer: object = None, pen_type: int = -1, extra_pins: tuple = None, i2_address: int = -1):
+    def __init__(self, display, rotate: int = -1, bus: object = None, buffer: object = None, pen_type: int = -1, extra_pins: tuple | None = None, i2_address: int = -1):
         ...
 
     def pixel(self, x: int, y: int) -> None:
@@ -101,10 +101,10 @@ class PicoGraphics:
     def character(self, char: int, x: int, y: int, scale: int = 2) -> None:
         ...
 
-    def text(self, text: str, x: int, y: int, wordwrap: int = 0x7fffffff, scale: int = None, angle: int = 0, spacing: int = 1, fixed_width: bool = False) -> None:
+    def text(self, text: str, x: int, y: int, wordwrap: int = 0x7fffffff, scale: float | None = None, angle: int = 0, spacing: int = 1, fixed_width: bool = False) -> None:
         ...
 
-    def measure_text(self, text: str, scale: int = None, spacing: int = 1, fixed_width: bool = False) -> int:
+    def measure_text(self, text: str, scale: float | None = None, spacing: int = 1, fixed_width: bool = False) -> int:
         ...
 
     def polygon(self, xy: list[tuple[int, int]]) -> None:
