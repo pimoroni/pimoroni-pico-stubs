@@ -140,7 +140,7 @@ class PicoGraphics:
     def set_palette(self, colors: list[tuple[int, int, int]]) -> None:
         ...
 
-    def set_backlight(self, brightness: int) -> None:
+    def set_backlight(self, brightness: float) -> None:
         ...
 
     def get_bounds(self) -> tuple[int, int]:
