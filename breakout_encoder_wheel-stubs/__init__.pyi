@@ -83,7 +83,12 @@ class BreakoutEncoderWheel:
     def show(self) -> None:
         ...
 
-    def gpio_pin_mode(self, gpio: int, mode: int|None=None) -> int|None:
+    @overload
+    def gpio_pin_mode(self, gpio: int) -> int:
+        ...
+
+    @overload
+    def gpio_pin_mode(self, gpio: int, mode: int) -> None:
         ...
 
     def gpio_pin_value(self, gpio: int, value: float|None = None, load=True, wait_for_load=False) -> float|int|None:
