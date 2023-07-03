@@ -1,0 +1,20 @@
+BUTTON_A = 12
+BUTTON_B = 13
+BUTTON_X = 14
+BUTTON_Y = 15
+
+ADC0 = 26
+ADC1 = 27
+ADC2 = 28
+
+MOTOR_1 = (9, 8)
+MOTOR_2 = (11, 10)
+
+GP0 = 0
+GP1 = 1
+GP2 = 2
+GP3 = 3
+GP4 = 4
+GP5 = 5
+GP6 = 6
+GP7 = 7

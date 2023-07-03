@@ -1,0 +1,6 @@
+BUTTON_A = 2
+MOTOR_1 = (6, 7)
+MOTOR_2 = (27, 26)
+NUM_MOTORS = 2
+SDA = 4
+SCL = 5
