@@ -146,7 +146,7 @@ class PicoGraphics:
     def get_bounds(self) -> tuple[int, int]:
         ...
 
-    def set_font(self, font: str) -> None:
+    def set_font(self, font: str|bytearray) -> None:
         ...
 
     def set_framebuffer(self, buffer: bytearray) -> None:
