@@ -25,8 +25,9 @@ DISPLAY_INTERSTATE75_192X64 = 20
 DISPLAY_INTERSTATE75_256X64 = 21
 DISPLAY_INKY_FRAME_7 = 22
 DISPLAY_COSMIC_UNICORN = 23
-DISPLAY_UNICORN_PACK = 24
-DISPLAY_SCROLL_PACK = 25
+DISPLAY_STELLAR_UNICORN = 24
+DISPLAY_UNICORN_PACK = 25
+DISPLAY_SCROLL_PACK = 26
 
 # Pen Types
 PEN_1BIT = 0
@@ -59,7 +60,7 @@ def RGB565_to_RGB(rgb565: int) -> tuple[int, int, int]:
 
 
 class PicoGraphics:
-    def __init__(self, display, rotate: int = -1, bus: object = None, buffer: object = None, pen_type: int = -1, extra_pins: tuple = None, i2_address: int = -1):
+    def __init__(self, display, rotate: int = -1, bus: object = None, buffer: object = None, pen_type: int = -1, extra_pins: tuple | None = None, i2_address: int = -1):
         ...
 
     def pixel(self, x: int, y: int) -> None:
@@ -101,10 +102,10 @@ class PicoGraphics:
     def character(self, char: int, x: int, y: int, scale: int = 2) -> None:
         ...
 
-    def text(self, text: str, x: int, y: int, wordwrap: int = 0x7fffffff, scale: int = None, angle: int = 0, spacing: int = 1, fixed_width: bool = False) -> None:
+    def text(self, text: str, x: int, y: int, wordwrap: int = 0x7fffffff, scale: float | None = None, angle: int = 0, spacing: int = 1, fixed_width: bool = False) -> None:
         ...
 
-    def measure_text(self, text: str, scale: int = None, spacing: int = 1, fixed_width: bool = False) -> int:
+    def measure_text(self, text: str, scale: float | None = None, spacing: int = 1, fixed_width: bool = False) -> int:
         ...
 
     def polygon(self, xy: list[tuple[int, int]]) -> None:
@@ -140,13 +141,13 @@ class PicoGraphics:
     def set_palette(self, colors: list[tuple[int, int, int]]) -> None:
         ...
 
-    def set_backlight(self, brightness: int) -> None:
+    def set_backlight(self, brightness: float) -> None:
         ...
 
     def get_bounds(self) -> tuple[int, int]:
         ...
 
-    def set_font(self, font: str) -> None:
+    def set_font(self, font: str|bytearray) -> None:
         ...
 
     def set_framebuffer(self, buffer: bytearray) -> None:

@@ -1,0 +1,33 @@
+WIDTH = 4
+HEIGHT = 4
+
+class PicoKeypad:
+    def __del__(self) -> None:
+        ...
+
+    def get_width(self) -> int:
+        ...
+
+    def get_height(self) -> int:
+        ...
+
+    def get_num_pads(self) -> int:
+        ...
+
+    def update(self) -> None:
+        ...
+
+    def set_brightness(self, brightness: float) -> None:
+        ...
+
+    def illuminate_xy(self, x: int, y: int, r: int, g: int, b: int) -> None:
+        ...
+
+    def illuminate(self, i: int, r: int, g: int, b: int) -> None:
+        ...
+
+    def clear(self) -> None:
+        ...
+
+    def get_button_states(self) -> int:
+        ...
