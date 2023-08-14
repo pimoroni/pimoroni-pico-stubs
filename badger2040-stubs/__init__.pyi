@@ -26,7 +26,7 @@ UPDATE_FAST = 2
 UPDATE_TURBO = 3
 
 ALARM_RTC: Literal[8] | None
-LED = 22
+LED: Literal[22] | Literal[25]
 ENABLE_3V3 = 10
 BUSY = 26
 
