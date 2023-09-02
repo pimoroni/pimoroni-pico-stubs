@@ -34,5 +34,5 @@ class QRCode:
     def get_size(self) -> tuple[int, int]:
         ...
 
-    def get_module(self) -> bool:
+    def get_module(self, x: int, y: int) -> bool:
         ...
