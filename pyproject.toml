@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "pimoroni-pico-stubs"
+version = "1.20.3"
+description = "MicroPython Stubs for Pimoroni MicroPython libraries for RP2040-based boards"
+license = "MIT"
+authors = []
+readme = "README.md"
+homepage = "https://github.com/pimoroni/pimoroni-pico-stubs"
+repository = "https://github.com/pimoroni/pimoroni-pico-stubs"
+
+packages = [
+    { "include" = "**/*.pyi", "from" = "stubs/"},
+    { "include" = "wakeup/**/*.pyi"},
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+micropython-rp2-rpi_pico_w-stubs = ">=1.20.0"
+
+[build-system]
+requires = [
+    "poetry-core>=1.0.0",
+]
+build-backend = "poetry.core.masonry.api"
