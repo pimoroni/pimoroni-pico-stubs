@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import Literal, overload
 
 # Displays
 DISPLAY_LCD_240X240 = 0
@@ -28,6 +29,7 @@ DISPLAY_COSMIC_UNICORN = 23
 DISPLAY_STELLAR_UNICORN = 24
 DISPLAY_UNICORN_PACK = 25
 DISPLAY_SCROLL_PACK = 26
+DISPLAY_PICO_W_EXPLORER = 27
 
 # Pen Types
 PEN_1BIT = 0
@@ -99,10 +101,10 @@ class PicoGraphics:
     def circle(self, x: int, y: int, radius: int) -> None:
         ...
 
-    def character(self, char: int, x: int, y: int, scale: int = 2) -> None:
+    def character(self, char: int, x: int, y: int, scale: int = 2, rotation: int = 0, codepage: Literal[194]|Literal[195] = 195) -> None:
         ...
 
-    def text(self, text: str, x: int, y: int, wordwrap: int = 0x7fffffff, scale: float | None = None, angle: int = 0, spacing: int = 1, fixed_width: bool = False) -> None:
+    def text(self, text: str, x: int, y: int, wordwrap: int = 0x7fffffff, scale: float | None = None, angle: int = 0, spacing: int = 1, fixed_width: bool = False, rotation: int = 0) -> None:
         ...
 
     def measure_text(self, text: str, scale: float | None = None, spacing: int = 1, fixed_width: bool = False) -> int:
@@ -114,6 +116,11 @@ class PicoGraphics:
     def triangle(self, x1: int, y1: int, x2: int, y2: int, x3: int, y3: int) -> None:
         ...
 
+    @overload
+    def line(self, x1: int, y1: int, x2: int, y2: int) -> None:
+        ...
+
+    @overload
     def line(self, x1: int, y1: int, x2: int, y2: int, thickness: int) -> None:
         ...
 
