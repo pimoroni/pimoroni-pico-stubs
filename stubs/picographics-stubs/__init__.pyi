@@ -110,7 +110,7 @@ class PicoGraphics:
     def measure_text(self, text: str, scale: float | None = None, spacing: int = 1, fixed_width: bool = False) -> int:
         ...
 
-    def polygon(self, xy: list[tuple[int, int]]) -> None:
+    def polygon(self, *xy: tuple[int, int]) -> None:
         ...
 
     def triangle(self, x1: int, y1: int, x2: int, y2: int, x3: int, y3: int) -> None:
