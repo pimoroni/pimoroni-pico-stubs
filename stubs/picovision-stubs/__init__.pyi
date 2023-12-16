@@ -1,8 +1,9 @@
 from __future__ import annotations
+
 from typing import Literal, overload
 
+from picographics import _IPicoGraphics
 from pimoroni_i2c import PimoroniI2C
-
 
 # PicoGraphicsPenType
 PEN_RGB888 = 9
@@ -22,7 +23,7 @@ WIDESCREEN = True
 WIDESCREEN = False
 
 
-class PicoVision:
+class PicoVision(_IPicoGraphics):
     def __init__(self, pen_type: int = PEN_RGB888, width: int = 320, height: int = 240, frame_width: int = -1, frame_height: int = -1):
         ...
 
@@ -71,7 +72,7 @@ class PicoVision:
     def circle(self, x: int, y: int, radius: int) -> None:
         ...
 
-    def character(self, char: int, x: int, y: int, scale: int = 2, rotation: int = 0, codepage: Literal[194]|Literal[195] = 195) -> None:
+    def character(self, char: int, x: int, y: int, scale: int = 2, rotation: int = 0, codepage: Literal[194] | Literal[195] = 195) -> None:
         ...
 
     def text(self, text: str, x: int, y: int, wordwrap: int = 0x7fffffff, scale: float | None = None, angle: int = 0, spacing: int = 1, fixed_width: bool = False, rotation: int = 0) -> None:
@@ -94,7 +95,7 @@ class PicoVision:
     def line(self, x1: int, y1: int, x2: int, y2: int, thickness: int) -> None:
         ...
 
-    def load_sprite(self, filename: str|bytes, index: int = -1, source: tuple[int, int, int, int] | None = None) -> bool:
+    def load_sprite(self, filename: str | bytes, index: int = -1, source: tuple[int, int, int, int] | None = None) -> bool:
         ...
 
     def display_sprite(self, slot: int, sprite_index: int, x: int, y: int, blend_mode: int = 1, v_scale: int = 1) -> None:
@@ -106,7 +107,7 @@ class PicoVision:
     def tilemap(self, tilemap: bytes, bounds: tuple[int, int, int, int], tile_data: tuple[int, int, bytes]) -> None:
         ...
 
-    def load_animation(self, slot: int, data: str|tuple[int, int, bytes], frame_size: tuple[int, int], source: tuple[int, int, int, int] | None = None) -> list[int]:
+    def load_animation(self, slot: int, data: str | tuple[int, int, bytes], frame_size: tuple[int, int], source: tuple[int, int, int, int] | None = None) -> list[int]:
         ...
 
     def create_pen(self, r: int, g: int, b: int) -> int:
@@ -133,7 +134,7 @@ class PicoVision:
     def get_bounds(self) -> tuple[int, int]:
         ...
 
-    def set_font(self, font: str|bytearray) -> None:
+    def set_font(self, font: str | bytearray) -> None:
         ...
 
     def get_i2c(self) -> PimoroniI2C:

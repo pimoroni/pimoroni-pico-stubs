@@ -1,6 +1,6 @@
 from typing import Iterator
-from picographics import PicoGraphics
 
+from picographics import _IPicoGraphics
 
 ANTIALIAS_NONE = 0
 ANTIALIAS_X4 = 1
@@ -35,7 +35,7 @@ class Rectangle(Polygon):
 
 
 class PicoVector():
-    def __init__(self, graphics: PicoGraphics):
+    def __init__(self, graphics: _IPicoGraphics):
         ...
 
     def set_font(self, font: str, size: int) -> bool:

@@ -1,4 +1,6 @@
 from __future__ import annotations
+
+import typing
 from typing import Literal, overload
 
 # Displays
@@ -61,7 +63,12 @@ def RGB565_to_RGB(rgb565: int) -> tuple[int, int, int]:
     ...
 
 
-class PicoGraphics:
+@typing.type_check_only
+class _IPicoGraphics:
+    ...
+
+
+class PicoGraphics(_IPicoGraphics):
     def __init__(self, display, rotate: int = -1, bus: object = None, buffer: object = None, pen_type: int = -1, extra_pins: tuple | None = None, i2_address: int = -1):
         ...
 
@@ -101,7 +108,7 @@ class PicoGraphics:
     def circle(self, x: int, y: int, radius: int) -> None:
         ...
 
-    def character(self, char: int, x: int, y: int, scale: int = 2, rotation: int = 0, codepage: Literal[194]|Literal[195] = 195) -> None:
+    def character(self, char: int, x: int, y: int, scale: int = 2, rotation: int = 0, codepage: Literal[194] | Literal[195] = 195) -> None:
         ...
 
     def text(self, text: str, x: int, y: int, wordwrap: int = 0x7fffffff, scale: float | None = None, angle: int = 0, spacing: int = 1, fixed_width: bool = False, rotation: int = 0) -> None:
@@ -154,7 +161,7 @@ class PicoGraphics:
     def get_bounds(self) -> tuple[int, int]:
         ...
 
-    def set_font(self, font: str|bytearray) -> None:
+    def set_font(self, font: str | bytearray) -> None:
         ...
 
     def set_framebuffer(self, buffer: bytearray) -> None:
