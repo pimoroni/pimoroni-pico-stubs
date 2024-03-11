@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import typing
+from typing import Literal, overload
+
 # Displays
 DISPLAY_LCD_240X240 = 0
 DISPLAY_ROUND_LCD_240X240 = 1
@@ -28,6 +31,7 @@ DISPLAY_COSMIC_UNICORN = 23
 DISPLAY_STELLAR_UNICORN = 24
 DISPLAY_UNICORN_PACK = 25
 DISPLAY_SCROLL_PACK = 26
+DISPLAY_PICO_W_EXPLORER = 27
 
 # Pen Types
 PEN_1BIT = 0
@@ -59,7 +63,12 @@ def RGB565_to_RGB(rgb565: int) -> tuple[int, int, int]:
     ...
 
 
-class PicoGraphics:
+@typing.type_check_only
+class _IPicoGraphics:
+    ...
+
+
+class PicoGraphics(_IPicoGraphics):
     def __init__(self, display, rotate: int = -1, bus: object = None, buffer: object = None, pen_type: int = -1, extra_pins: tuple | None = None, i2_address: int = -1):
         ...
 
@@ -99,21 +108,26 @@ class PicoGraphics:
     def circle(self, x: int, y: int, radius: int) -> None:
         ...
 
-    def character(self, char: int, x: int, y: int, scale: int = 2) -> None:
+    def character(self, char: int, x: int, y: int, scale: int = 2, rotation: int = 0, codepage: Literal[194] | Literal[195] = 195) -> None:
         ...
 
-    def text(self, text: str, x: int, y: int, wordwrap: int = 0x7fffffff, scale: float | None = None, angle: int = 0, spacing: int = 1, fixed_width: bool = False) -> None:
+    def text(self, text: str, x: int, y: int, wordwrap: int = 0x7fffffff, scale: float | None = None, angle: int = 0, spacing: int = 1, fixed_width: bool = False, rotation: int = 0) -> None:
         ...
 
     def measure_text(self, text: str, scale: float | None = None, spacing: int = 1, fixed_width: bool = False) -> int:
         ...
 
-    def polygon(self, xy: list[tuple[int, int]]) -> None:
+    def polygon(self, *xy: tuple[int, int]) -> None:
         ...
 
     def triangle(self, x1: int, y1: int, x2: int, y2: int, x3: int, y3: int) -> None:
         ...
 
+    @overload
+    def line(self, x1: int, y1: int, x2: int, y2: int) -> None:
+        ...
+
+    @overload
     def line(self, x1: int, y1: int, x2: int, y2: int, thickness: int) -> None:
         ...
 
@@ -147,7 +161,7 @@ class PicoGraphics:
     def get_bounds(self) -> tuple[int, int]:
         ...
 
-    def set_font(self, font: str|bytearray) -> None:
+    def set_font(self, font: str | bytearray) -> None:
         ...
 
     def set_framebuffer(self, buffer: bytearray) -> None:

@@ -1,14 +1,15 @@
 from __future__ import annotations
 
-from picographics import PicoGraphics
+from picographics import _IPicoGraphics
 
 JPEG_SCALE_FULL = 0
 JPEG_SCALE_HALF = 2
 JPEG_SCALE_QUARTER = 4
 JPEG_SCALE_EIGHTH = 8
 
+
 class JPEG:
-    def __init__(self, picographics: PicoGraphics):
+    def __init__(self, picographics: _IPicoGraphics):
         ...
 
     def __del__(self) -> None:
