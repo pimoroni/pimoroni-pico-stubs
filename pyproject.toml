@@ -9,8 +9,7 @@ homepage = "https://github.com/pimoroni/pimoroni-pico-stubs"
 repository = "https://github.com/pimoroni/pimoroni-pico-stubs"
 
 packages = [
-    { "include" = "**/*.pyi", "from" = "stubs/"},
-    { "include" = "wakeup/**/*.pyi"},
+    { "include" = "**/*.pyi", from = "pimoroni_pico-stubs"},
 ]
 
 [tool.poetry.dependencies]
